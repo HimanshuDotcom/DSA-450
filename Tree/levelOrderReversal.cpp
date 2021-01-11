@@ -6,7 +6,7 @@ vector<int> levelOrderReverse(TreeNode* root) {
 	stack<int> s;
 	q.push(root);
 	while(!q.empty()) {
-		root = q.top();
+		root = q.front();
 		if(root -> left) q.push(root -> left);
 		if(root -> right) q.push(root -> right);
 		s.push(root -> data);
