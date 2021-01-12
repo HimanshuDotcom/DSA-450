@@ -10,7 +10,8 @@ void height(TreeNode* root) {
 		q.pop();
 		if(root == NULL) {
 			level++;
-			q.push(NULL); // marker for next level
+			if(!q.empty())
+				q.push(NULL); // marker for next level
 		}
 		else {
 			if(root -> left) q.push(root -> left);
