@@ -33,9 +33,7 @@ class Map {
 		}
 		delete [] bucket;
 	}
-	int getSize() {
-		return size;
-	}
+	
 	int hashFunction(string key) {
 		int hashKey = 0;
 		int currCoff = 1;
@@ -47,6 +45,33 @@ class Map {
 		}
 		return hashKey % bucketSize;
 	}
+	
+	void rehash() {
+		MapNode<T>** temp = bucket;
+		bucket = new MapNode<T>*(bucketSize * 2);
+		for(int i = 0; i < bucketSize*2; i++)
+			bucket[i] = NULL;
+		int oldSize = bucketSize;
+		bucketSize *= 2;
+		size = 0; // new bucket is empty
+		for(int i = 0; i < oldSize; i++) {
+			MapNode<T>* head = bucket[i];
+			while(head != NULL) {
+				insert(head -> key, head -> value);
+				head = head -> next;
+			}
+		}
+		for(int i = 0; i < oldSize; i++)
+			delete oldSize[i];
+		delete [] temp;
+	}
+	
+	public:
+		
+	int getSize() {
+		return size;
+	}
+	
 	void insert(string key, T value) {
 		int index = hashFunction(key);
 		MapNode<T>* curr = bucket[index];
@@ -61,7 +86,10 @@ class Map {
 		MapNode<T>* newPair = new MapNode<T>(key, value);
 		newPair -> next = curr;
 		bucket[index] = newPair;
-		size++;		 	
+		size++;
+		double loadFactor = (1.0*size)/bucketSize;
+		if(load > 0.7)
+			rehash();		 	
 	}
 	
 	void remove(string key) {
@@ -97,5 +125,3 @@ class Map {
 	}
 	
 };
-int main () {
-}
