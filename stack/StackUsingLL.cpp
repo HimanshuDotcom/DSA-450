@@ -1,9 +1,10 @@
 template<typename T>
 class stackNode {
+	public:
+		
 	T data;
 	stackNode<T>* next;
 	
-	public:
 		stackNode(T data) {
 			this -> data = data;
 			next = NULL;
@@ -47,6 +48,4 @@ class Stack {
 			delete temp;
 			size--;
 		}
-		
-		
 };
