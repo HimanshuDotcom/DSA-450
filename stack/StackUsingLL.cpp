@@ -1,10 +1,10 @@
 template<typename T>
 class stackNode {
 	T data;
-	stackNode* next;
+	stackNode<T>* next;
 	
 	public:
-		stackNode(int data) {
+		stackNode(T data) {
 			this -> data = data;
 			next = NULL;
 		}
@@ -17,7 +17,7 @@ class stackNode {
 
 template<typename T>
 class Stack {
-	T* head;
+	stackNode<T>* head;
 	int size;
 	
 	public:
@@ -30,7 +30,7 @@ class Stack {
 			return size;
 		}
 		
-		void push(int data) {
+		void push(T data) {
 			stackNode<T> *newnode = new stackNode<T>(data);
 			newnode -> next = head;
 			head = newnode;
@@ -44,7 +44,7 @@ class Stack {
 			}
 			stackNode<T> *temp = head;
 			head = head -> next;
-			delete head;
+			delete temp;
 			size--;
 		}
 		

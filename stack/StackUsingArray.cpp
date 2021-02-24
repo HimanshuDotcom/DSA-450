@@ -18,7 +18,7 @@ class Stack {
 		}
 		
 		// insert Element
-		void push(int data) {
+		void push(T data) {
 			if(size == capacity) {
 				T *newArr = new T[capacity * 2];
 				for(int i = 0; i < capacity; i++)
