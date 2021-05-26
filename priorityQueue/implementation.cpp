@@ -1,4 +1,5 @@
 
+//  ----------- This is an implementation of min priority queue  ------------- 
 
 class PriorityQueue {
 	vector<int> pq;
@@ -47,6 +48,8 @@ class PriorityQueue {
 			int rightChildIndex = 2*parentIndex + 2;
 			while(leftChildIndex < pq.size()) {
 				int minIndex = parentIndex;
+				
+				// Select min of left and right child
 				if(pq[minIndex] > pq[leftChildIndex]) //   Note ----- we are using minIndex not parentIndex
 					minIndex = leftChildIndex; 
 				if(rightChildIndex < pq.size() && pq[minIndex] > pq[rightChildIndex]) 
