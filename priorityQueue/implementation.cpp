@@ -23,16 +23,16 @@ class PriorityQueue {
 		void insert(int data) {
 			pq.push_back(data);
 			int childIndex = pq.size() - 1;
-			int parentIndex = (childIndex - 1) / 2;
-			while(pq[parentIndex] > pq[childIndex]) {
-				// swaping elements
-				int temp = pq[parentIndex];
-				pq[parentIndex] = pq[childIndex];
-				pq[childIndex] = temp;
-				
+			while(childIndex > 0) {
+				int parentIndex = (childIndex - 1) / 2;
+				if(pq[parentIndex] > pq[childIndex]) {
+					// swaping elements
+					int temp = pq[parentIndex];
+					pq[parentIndex] = pq[childIndex];
+					pq[childIndex] = temp;
+				}
+				else break;
 				childIndex = parentIndex;
-				if(childIndex == 0) break;
-				parentIndex = (childIndex - 1) / 2;
 			}
 		}
 		
