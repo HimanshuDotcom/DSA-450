@@ -40,10 +40,10 @@ int DPsol(int **input, int m, int n) {
 	}
 	cost[0][0] = input[0][0];
 	// first row 
-	for(int i = 0; i < m; i++)
+	for(int i = 1; i < n; i++)
 		cost[0][i] = cost[0][i-1] + input[0][i];
 	// first col
-	for(int i = 0; i < n; i++)
+	for(int i = 1; i < m; i++)
 		cost[i][0] = cost[i-1][0] + input[i][0];
 	
 	for(int i = 1; i < m; i++) {
