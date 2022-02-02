@@ -19,7 +19,7 @@ class Stack {
 		
 		// insert Element
 		void push(T data) {
-			if(size == capacity) {
+			if(getSize() == capacity) {
 				T *newArr = new T[capacity * 2];
 				for(int i = 0; i < capacity; i++)
 					newArr[i] = arr[i];
@@ -33,7 +33,7 @@ class Stack {
 		
 		//  delete Element
 		void pop() {
-			if(size == 0) {
+			if(getSize == 0) {
 				cout << "Stack is empty" << endl;
 				return;
 			}
@@ -43,7 +43,7 @@ class Stack {
 		
 		// element on top
 		T top() {
-			if(size == 0) {
+			if(getSize == 0) {
 				cout << "Stack is empty" << endl;
 				return -1;
 			}

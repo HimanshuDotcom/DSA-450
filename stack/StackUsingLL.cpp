@@ -45,6 +45,7 @@ class Stack {
 			}
 			stackNode<T> *temp = head;
 			head = head -> next;
+			temp -> next = NULL;
 			delete temp;
 			size--;
 		}
